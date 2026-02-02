@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>قصة حبنا ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+    }
+    .date {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .counter {
+      font-size: 2em;
+      margin: 30px 0;
+      background: rgba(255,255,255,0.2);
+      display: inline-block;
+      padding: 20px 30px;
+      border-radius: 20px;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .message {
+      font-size: 1.8em;
+      margin: 40px;
+    }
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.8); opacity: 0; }
+    }
+  </style>
+</head>
+<body>  <h1>💖 أول يوم اتقابلنا 💖</h1>
+  <div class="date">14 / 10 / 2025</div>  <div class="counter" id="counter"></div>  <div class="message">
+    من اليوم ده وأنا رسميًا بقيت <br>
+    <strong>مجنون حبك 😍🔥</strong>
+  </div>  <div class="gallery">
+    <img src="https://placehold.co/400x400?text=صورتنا+1" />
+    <img src="https://placehold.co/400x400?text=صورتنا+2" />
+    <img src="https://placehold.co/400x400?text=صورتنا+3" />
+  </div>  <script>
+    // Counter
+    const startDate = new Date('2025-10-14');
+    const counterEl = document.getElementById('counter');
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      counterEl.innerHTML = `عدّى علينا ❤️<br>${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+    }
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  </script></body>
+</html>
