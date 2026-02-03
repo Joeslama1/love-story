@@ -3,64 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <title>Rody ❤️ قصة حب</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Elegant Arabic Font -->
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body{
-      margin:0;font-family:'Cairo',sans-serif;
-      background:linear-gradient(135deg,#ff5f8f,#ff9ab5);
-      color:#fff;text-align:center;overflow-x:hidden;
-      perspective:1200px;
+      margin:0;
+      font-family:'El Messiri',sans-serif;
+      background:radial-gradient(circle at top,#ffb3c7,#ff5f8f);
+      color:#fff;
+      text-align:center;
+      overflow-x:hidden;
+      perspective:1600px;
     }
-    h1{margin-top:50px;font-size:3.6em;font-weight:900}
+
+    h1{
+      margin-top:50px;
+      font-size:3.4em;
+      font-weight:700;
+      text-shadow:0 15px 35px rgba(0,0,0,.45)
+    }
+
     .date{opacity:.9;font-size:1.4em}
 
+    /* ===== Counter ===== */
     .counter{
-      margin:35px auto;font-size:2.1em;
-      padding:25px 40px;border-radius:30px;
+      margin:40px auto;
+      padding:28px 45px;
+      border-radius:35px;
       background:rgba(255,255,255,.18);
-      backdrop-filter:blur(12px);
-      box-shadow:0 20px 40px rgba(0,0,0,.35);
-      width:fit-content;
+      backdrop-filter:blur(16px);
+      box-shadow:0 30px 60px rgba(0,0,0,.45);
+      transform:translateZ(60px);
+    }
+    .counter-row{
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      font-size:1.9em;
+      font-weight:600;
+    }
+    .counter-box{
+      background:rgba(255,255,255,.22);
+      padding:15px 22px;
+      border-radius:20px;
+      min-width:90px;
+    }
+    .counter-box span{
+      display:block;
+      font-size:.75em;
+      opacity:.9
     }
 
-    .message{font-size:2.2em;margin:40px 20px;font-weight:700}
-
-    /* Book Gallery */
-    .book{
-      width:90%;max-width:520px;height:420px;
-      margin:60px auto;position:relative;
-      transform-style:preserve-3d;
+    .message{
+      font-size:2.2em;
+      margin:45px 20px;
+      font-weight:600;
+      transform:translateZ(80px)
     }
-    .page{
-      position:absolute;inset:0;
-      background:#fff;border-radius:30px;
+
+    /* ===== Instagram-like Slider ===== */
+    .slider{
+      width:85%;
+      max-width:420px;
+      height:520px;
+      margin:80px auto;
+      position:relative;
+      border-radius:40px;
       overflow:hidden;
-      box-shadow:0 25px 60px rgba(0,0,0,.4);
-      transform-origin:left;
-      transition:transform 1s;
-      cursor:pointer;
+      box-shadow:0 35px 80px rgba(0,0,0,.55);
+      transform:translateZ(100px) rotateX(6deg);
+      background:#000;
     }
-    .page img{
-      width:100%;height:100%;object-fit:cover
+    .slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity 1.2s ease, transform 1.2s ease;
     }
-    .page.flipped{transform:rotateY(-180deg)}
+    .slide.active{
+      opacity:1;
+      transform:scale(1.02)
+    }
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover
+    }
 
+    /* Floating Hearts */
     .heart{position:fixed;bottom:-20px;font-size:28px;animation:float 7s linear infinite}
     @keyframes float{0%{transform:translateY(0) scale(1)}100%{transform:translateY(-120vh) scale(2);opacity:0}}
 
-    /* Password */
-    #lock{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,#ff5f8f,#ff9ab5);z-index:9999}
-    #lock-box{
-      background:rgba(255,255,255,.18);padding:40px;border-radius:30px;
-      backdrop-filter:blur(12px);width:90%;max-width:400px;
-      box-shadow:0 25px 50px rgba(0,0,0,.4)
+    /* ===== Password ===== */
+    #lock{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(circle at top,#ffb3c7,#ff5f8f);z-index:9999
     }
-    input,button{width:100%;padding:15px;border-radius:18px;border:none;font-size:1.1em}
-    button{margin-top:18px;background:#ff3f6c;color:#fff;font-weight:700;cursor:pointer}
+    #lock-box{
+      background:rgba(255,255,255,.22);
+      padding:45px;
+      border-radius:35px;
+      backdrop-filter:blur(18px);
+      width:90%;max-width:420px;
+      box-shadow:0 30px 60px rgba(0,0,0,.5)
+    }
+    input,button{
+      width:100%;
+      padding:18px;
+      border-radius:22px;
+      border:none;
+      font-size:1.15em;
+      font-family:'El Messiri',sans-serif
+    }
+    button{
+      margin-top:20px;
+      background:linear-gradient(135deg,#ff3f6c,#ff6f91);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 15px 35px rgba(0,0,0,.4)
+    }
 
-    /* Surprise */
-    #surprise{display:none;margin:60px 20px;font-size:2em;line-height:1.8}
+    /* ===== Surprise ===== */
+    #surprise{
+      display:none;
+      margin:80px 25px;
+      font-size:2.1em;
+      line-height:2;
+      transform:translateZ(120px)
+    }
   </style>
 </head>
 <body>
@@ -81,47 +154,63 @@
 
   <h1>💖 أول يوم اتقابلنا 💖</h1>
   <div class="date">14 / 10 / 2025</div>
-  <div class="counter" id="counter"></div>
+
+  <!-- Counter -->
+  <div class="counter">
+    <div class="counter-row">
+      <div class="counter-box" id="days">0<span>يوم</span></div>
+      <div class="counter-box" id="hours">0<span>ساعة</span></div>
+      <div class="counter-box" id="minutes">0<span>دقيقة</span></div>
+    </div>
+  </div>
 
   <div class="message">بحبك يا مجنونة 😍🔥</div>
 
-  <!-- Book Gallery -->
-  <div class="book" id="book">
-    <div class="page"><img src="image1.jpg"></div>
-    <div class="page"><img src="image2.jpg"></div>
-    <div class="page"><img src="image3.jpg"></div>
+  <!-- Slider -->
+  <div class="slider" id="slider">
+    <div class="slide active"><img src="image1.jpg"></div>
+    <div class="slide"><img src="image2.jpg"></div>
+    <div class="slide"><img src="image3.jpg"></div>
   </div>
 
-  <button onclick="showSurprise()" style="padding:18px 35px;border-radius:30px;font-size:1.3em">مفاجأة ليكي 🎁</button>
+  <button onclick="showSurprise()" style="padding:22px 45px;border-radius:40px;font-size:1.4em">
+    دوسي هنا يا حبيبة بابا 💖
+  </button>
 
-  <div id="surprise">
-    <div id="typing"></div>
-  </div>
+  <div id="surprise"><div id="typing"></div></div>
 
 </div>
 
 <audio id="song" src="song.mp3"></audio>
 
 <script>
+/* Unlock */
 function unlock(){
-  if(document.getElementById('password').value==='frawla'){
+  if(password.value==='frawla'){
     lock.style.display='none';content.style.display='block';song.play();
   }else error.style.display='block';
 }
 
-// Counter
+/* Counter */
 const startDate=new Date('2025-10-14');
-const counterEl=document.getElementById('counter');
 function updateCounter(){
   const diff=new Date()-startDate;
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor(diff/3600000)%24;
-  const m=Math.floor(diff/60000)%60;
-  counterEl.innerHTML=`عدّى علينا ❤️<br>${d} يوم • ${h} ساعة • ${m} دقيقة`;
+  days.innerHTML=Math.floor(diff/86400000)+"<span>يوم</span>";
+  hours.innerHTML=Math.floor(diff/3600000)%24+"<span>ساعة</span>";
+  minutes.innerHTML=Math.floor(diff/60000)%60+"<span>دقيقة</span>";
 }
 setInterval(updateCounter,1000);updateCounter();
 
-// Hearts
+/* Slider Auto */
+const slides=document.querySelectorAll('.slide');
+let current=0;
+setInterval(()=>{
+  slides[current].classList.remove('active');
+  current=(current+1)%slides.length;
+  slides[current].classList.add('active');
+},3500);
+
+/* Hearts */
 setInterval(()=>{
   const h=document.createElement('div');h.className='heart';
   h.innerHTML=['❤️','💖','💘','💝'][Math.floor(Math.random()*4)];
@@ -129,17 +218,7 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),7000);
 },400);
 
-// Book flip
-const pages=document.querySelectorAll('.page');
-let current=0;
-pages.forEach((p,i)=>{
-  p.style.zIndex=pages.length-i;
-  p.onclick=()=>{
-    if(i===current){p.classList.add('flipped');current++;}
-  }
-});
-
-// Surprise typing
+/* Surprise Typing */
 function showSurprise(){
   surprise.style.display='block';
   const text=`هي امرأةٌ ❤️\nأُحبُّ ..\nكلَّ ما فيها\nولي عُذري إذا كنتُ\nبها وحدي أنا المفتونْ`;
