@@ -2,72 +2,103 @@
 <head>
   <meta charset="UTF-8">
   <title>قصة حبنا ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      background: linear-gradient(135deg, #ff6a88, #ff99ac);
       color: white;
       text-align: center;
       overflow-x: hidden;
     }
     h1 {
-      margin-top: 40px;
-      font-size: 3em;
+      margin-top: 50px;
+      font-size: 3.5em;
+      font-weight: 900;
     }
     .date {
-      font-size: 1.5em;
-      margin-bottom: 20px;
+      font-size: 1.4em;
+      opacity: 0.9;
     }
     .counter {
-      font-size: 2em;
-      margin: 30px 0;
-      background: rgba(255,255,255,0.2);
-      display: inline-block;
-      padding: 20px 30px;
-      border-radius: 20px;
-    }
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 40px 0;
-    }
-    .gallery img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      font-size: 2.2em;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.18);
+      padding: 25px 40px;
+      border-radius: 30px;
+      width: fit-content;
+      backdrop-filter: blur(10px);
     }
     .message {
-      font-size: 1.8em;
-      margin: 40px;
+      font-size: 2em;
+      margin: 50px 20px;
+      font-weight: 700;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      transition: transform 0.4s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
     }
     .heart {
       position: fixed;
       bottom: -20px;
-      font-size: 24px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.8;
+      font-size: 26px;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.9;
     }
     @keyframes floatUp {
       0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-110vh) scale(1.8); opacity: 0; }
+      100% { transform: translateY(-120vh) scale(2); opacity: 0; }
     }
   </style>
 </head>
-<body>  <h1>💖 أول يوم اتقابلنا 💖</h1>
-  <div class="date">14 / 10 / 2025</div>  <div class="counter" id="counter"></div>  <div class="message">
-    من اليوم ده وأنا رسميًا بقيت <br>
-    <strong>مجنون حبك 😍🔥</strong>
-  </div>  <div class="gallery">
-    <img src="https://placehold.co/400x400?text=صورتنا+1" />
-    <img src="https://placehold.co/400x400?text=صورتنا+2" />
-    <img src="https://placehold.co/400x400?text=صورتنا+3" />
+<body>  <!-- Password Screen -->  <div id="lock" style="position:fixed;inset:0;background:linear-gradient(135deg,#ff6a88,#ff99ac);display:flex;align-items:center;justify-content:center;z-index:9999;">
+    <div style="background:rgba(255,255,255,0.18);padding:40px;border-radius:30px;backdrop-filter:blur(10px);width:90%;max-width:400px;box-shadow:0 20px 40px rgba(0,0,0,0.35);">
+      <h2 style="margin-bottom:20px;">🔐 دخول خاص</h2>
+      <p style="margin-bottom:25px;">الموقع ده معمول لشخص واحد بس ❤️</p>
+      <input id="password" type="password" placeholder="كلمة السر" style="width:100%;padding:15px;border-radius:15px;border:none;font-size:1.1em;text-align:center;">
+      <button onclick="unlock()" style="margin-top:20px;width:100%;padding:15px;border:none;border-radius:20px;font-size:1.2em;font-weight:700;background:#ff3f6c;color:white;cursor:pointer;">دخول 💖</button>
+      <p id="error" style="color:#ffd1dc;margin-top:15px;display:none;">كلمة السر غلط يا مجنونة 😌</p>
+    </div>
+  </div>  <!-- Main Content -->  <div id="content" style="display:none;"><h1>💖 أول يوم اتقابلنا 💖</h1>
+<div class="date">14 / 10 / 2025</div>
+
+<div class="counter" id="counter"></div>
+
+<div class="message">
+  <span style="font-size:1.4em">بحبك يا مجنونة 😍🔥💍</span>
+</div>
+
+<div class="gallery">
+  <img src="image1.jpg" alt="صورة حب 1">
+  <img src="image2.jpg" alt="صورة حب 2">
+  <img src="image3.jpg" alt="صورة حب 3">
+</div>
+
   </div>  <script>
-    // Counter
+    function unlock() {
+      const pass = document.getElementById('password').value;
+      if (pass === 'frawla') {
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+
     const startDate = new Date('2025-10-14');
     const counterEl = document.getElementById('counter');
 
@@ -79,20 +110,20 @@
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-      counterEl.innerHTML = `عدّى علينا ❤️<br>${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+      counterEl.innerHTML = `عدّى علينا ❤️<br>${days} يوم • ${hours} ساعة • ${minutes} دقيقة`;
     }
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // Floating hearts
     setInterval(() => {
+      const hearts = ['❤️','💖','💘','💝','💕'];
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.innerHTML = '❤️';
+      heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      heart.style.animationDuration = (5 + Math.random() * 4) + 's';
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 400);
+      setTimeout(() => heart.remove(), 7000);
+    }, 350);
   </script></body>
-</html>
+  </html>
